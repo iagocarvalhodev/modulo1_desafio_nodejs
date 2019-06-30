@@ -13,6 +13,11 @@ nunjucks.configure("views", {
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "njk");
 
+// rotas
+app.get("/", (req, res) => {
+  res.render("index");
+});
+
 app.listen(3001, () => {
   console.log(`Server started on port`);
 });
