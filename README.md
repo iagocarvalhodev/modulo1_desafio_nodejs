@@ -1,4 +1,4 @@
-# modulo1_desafio_nodejs
+# Desafio do Curso do GoNode da Rocketseat
 Desafio 1, nodejs do curso da Rocketseat goNode utilizando node, express e nunjucks.
 
-Desafio do Curso do GoNode da Rocketseat
+
