@@ -1,6 +1,7 @@
 const express = require("express");
 const nunjucks = require("nunjucks");
 
+// iniciando o express
 const app = express();
 
 // configurando o nunjucks
@@ -11,8 +12,9 @@ nunjucks.configure("views", {
 });
 
 app.use(express.urlencoded({ extended: false }));
-app.set("view engine", "njk");
+app.set("view engine", "njk"); //setando a engine nunjucks
 
+// middleware de verificação se a idade esta sendo passada na rota
 const checkQueryMiddleware = (req, res, next) => {
   if (req.query.age) {
     return next();
