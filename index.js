@@ -13,6 +13,14 @@ nunjucks.configure("views", {
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "njk");
 
+const checkQueryMiddleware = (req, res, next) => {
+  if (req.query.age) {
+    return next();
+  } else {
+    res.redirect("/");
+  }
+};
+
 // rotas
 app.get("/", (req, res) => {
   res.render("index");
@@ -27,10 +35,10 @@ app.post("/check", (req, res) => {
   }
 });
 
-app.get("/major", (req, res) => {
+app.get("/major", checkQueryMiddleware, (req, res) => {
   return res.send(`Você e maior de idade, sua idade é: ${req.query.age}`);
 });
-app.get("/minor", (req, res) => {
+app.get("/minor", checkQueryMiddleware, (req, res) => {
   return res.send(`Você e menor de idade, sua idade é: ${req.query.age}`);
 });
 
